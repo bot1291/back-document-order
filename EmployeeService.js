@@ -17,10 +17,10 @@ class EmployeeService {
 			throw new Error('Документ не указан');
 		}
 		const currentEmployee = await Employee.findById(employee._id);
-		const redactedDocuments = currentEmployee?.documents.map((d) =>
+		const redactedDocuments = currentEmployee.documents.map((d) =>
 			d.toLocaleLowerCase().split(' ').join('')
 		);
-		const checkForCopy = redactedDocuments?.includes(
+		const checkForCopy = redactedDocuments.includes(
 			employee.document.toLocaleLowerCase().split(' ').join('')
 		);
 		if (checkForCopy) {
